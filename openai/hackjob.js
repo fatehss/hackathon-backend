@@ -6,7 +6,7 @@ import { MongoClient } from 'mongodb';
 dotenv.config();
 // Connection URL
 const uri = "mongodb://localhost:27017";
-const order = "give me a summary of the health issues of patients Diana Prince"
+const order = "give me a summary of the health issues of patient Diana Prince"
 // Create a new MongoClient
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 
@@ -22,7 +22,7 @@ async function main() {
     response_format: {"type": "json_object"}
   });
   let people = JSON.parse(completion.choices[0]['message']['content']);
-  console.log(people);
+  // console.log(people);
 
   //now do the mongodb 
 
@@ -37,17 +37,18 @@ async function main() {
 
     const query = {name: people["names"][0]}
 
-    const info = await collection.findOne(query);
-
-    if (info) {
+    const info_raw = await collection.findOne(query);
+    const info = JSON.stringify(info_raw)
+    if (info_raw) {
         console.log("Found a document':", info);
 
-        let new_prompt = order + `, given the context: ${info}`;
+        let new_prompt = order + `, given the context: <<<${info}>>>. You are a Nurse AI, be professional and get to the point concisely. Only use the given context for your response.`;
         const completion2 = await openai.chat.completions.create({
             messages: [{ role: "system", content: new_prompt }],
-            model: "gpt-3.5-turbo"
+            model: "gpt-4o"
           });
-        console.log(`\n\nHere is the response: ${completion2.choices[0]["message"]["content"]}`)
+          console.log(`\nHere is the order: ${new_prompt}\n`)
+        console.log(`\nHere is the response:\n ${completion2.choices[0]["message"]["content"]}`)
     } else {
         console.log("No document found");
     }
