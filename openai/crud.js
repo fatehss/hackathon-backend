@@ -39,7 +39,7 @@ export async function READ(prompt, input) {
         
         console.log(`Here is the query: ${context.toString()}`);
 
-        let new_prompt = "Forget any previous prompt. Answer the following as aa Nurse AI, be professional and get to the point concisely. Only use the given context for your response:<<<"+ prompt + `>>>, given the context: <<<${context.toString()}>>>. You are .`;
+        let new_prompt = "Forget any previous prompt. Answer the following as a Nurse AI, be professional and get to the point concisely. Do NOT include symbols, code, orformulas in response. Only use the given context for your response:<<<"+ prompt + `>>>, given the context: <<<${context.toString()}>>>. You are .`;
         // console.log(new_prompt);
         const completion2 = await openai.chat.completions.create({
             messages: [{ role: "system", content: new_prompt }],
@@ -89,7 +89,7 @@ export async function CREATE(input) {
 
             // Insert the new document
             const result = await collection.insertOne(newDoc);
-            return `Inserted document for ${outerKey}with id: ${result.insertedId}`;
+            return `Inserted document for ${outerKey} with id: ${result.insertedId}`;
         }
     } catch (err) {
         console.error(err);

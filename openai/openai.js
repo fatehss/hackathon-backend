@@ -3,16 +3,18 @@ import dotenv from "dotenv";
 import {CREATE, READ, UPDATE, DELETE} from "./crud.js"
 // Load environment variables from .env file
 dotenv.config();
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
-});
 
 // let prompt = "in the following information, return the name(s) of the individual in json format like <<{\"names\": [\"x\",\"y\"]}>>. provide the response in just json and nothing else. here is the content: <<give me a summary of the health issues of patients john deere, fateh sandhu, and virat kohli>>"
  let order = "tell me about the health of John Doe.";
 // let order = "update john doe's weight to 150, height to 180";
 // let order = "create a patient called fateh sandhu in the database with height 176 and weight 74, medical conditions of kidney stones. update dude guy's weight to 89.";
 
-const format = `
+
+export async function performCrudOperations(order) {
+  const openai = new OpenAI({
+    apiKey: process.env.OPENAI_API_KEY,
+  });
+  const format = `
 {
   "READ": [
     "name1",
@@ -41,7 +43,7 @@ const format = `
 
 `
 let prompt = `based on the following information, return in this format <<<${format}>>>json the type of crud action(s) we would use (CREATE, READ, UPDATE, DELETE): ${order}`;
-async function main() {
+
   const completion = await openai.chat.completions.create({
     messages: [{ role: "system", content: prompt }],
     model: "gpt-4o",
@@ -82,8 +84,6 @@ async function main() {
 
 
 }
-
-main();
 
 /*
 bring up the problem at the start of the pitch
