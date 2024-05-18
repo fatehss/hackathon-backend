@@ -1,11 +1,11 @@
 import OpenAI from "openai";
 import dotenv from "dotenv";
 import { MongoClient } from 'mongodb';
-
+dotenv.config();
 // functions.js
 export async function READ(prompt, input) {
     // assumes input in the form {READ: [names]}
-    const uri = "mongodb://localhost:27017";
+    const uri = process.env.MONGODB_CONNECTION_STRING;
     
     // Create a new MongoClient
     const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
@@ -60,7 +60,7 @@ export async function READ(prompt, input) {
 
 
 export async function CREATE(input) {
-    const uri = "mongodb://localhost:27017";
+    const uri = process.env.MONGODB_CONNECTION_STRING;
     
     // Create a new MongoClient
     const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
@@ -100,7 +100,7 @@ export async function CREATE(input) {
 }
 
 export async function UPDATE(input) {
-    const uri = "mongodb://localhost:27017";
+    const uri = process.env.MONGODB_CONNECTION_STRING;
     
     // Create a new MongoClient
     const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
@@ -145,7 +145,7 @@ export async function UPDATE(input) {
 
 export async function DELETE(input) {
     // assumes input in the form {READ: [names]}
-    const uri = "mongodb://localhost:27017";
+    const uri = process.env.MONGODB_CONNECTION_STRING;
     
     // Create a new MongoClient
     const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
