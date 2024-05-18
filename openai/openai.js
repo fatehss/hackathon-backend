@@ -4,12 +4,6 @@ import {CREATE, READ, UPDATE, DELETE} from "./crud.js"
 // Load environment variables from .env file
 dotenv.config();
 
-// let prompt = "in the following information, return the name(s) of the individual in json format like <<{\"names\": [\"x\",\"y\"]}>>. provide the response in just json and nothing else. here is the content: <<give me a summary of the health issues of patients john deere, fateh sandhu, and virat kohli>>"
- let order = "tell me about the health of John Doe.";
-// let order = "update john doe's weight to 150, height to 180";
-// let order = "create a patient called fateh sandhu in the database with height 176 and weight 74, medical conditions of kidney stones. update dude guy's weight to 89.";
-
-
 export async function performCrudOperations(order) {
   const openai = new OpenAI({
     apiKey: process.env.OPENAI_API_KEY,
