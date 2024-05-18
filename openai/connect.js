@@ -1,5 +1,6 @@
 import { MongoClient } from 'mongodb';
 
+
 async function main() {
     // Connection URL
     const uri = "mongodb://localhost:27017";
@@ -20,8 +21,8 @@ async function main() {
         const doc = { name: "John Doe", height: 180, medical_conditions: ["Hypertension"], age: 40, city: "New York", occupation: "Engineer" };
 
         // Insert the document
-        // const result = await collection.insertOne(doc);
-        // console.log(`A document was inserted with the _id: ${result.insertedId}`);
+        const result = await collection.insertOne(doc);
+        console.log(`A document was inserted with the _id: ${result.insertedId}`);
         
     } catch (err) {
         console.error(err);

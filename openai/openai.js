@@ -8,16 +8,9 @@ const openai = new OpenAI({
 });
 
 // let prompt = "in the following information, return the name(s) of the individual in json format like <<{\"names\": [\"x\",\"y\"]}>>. provide the response in just json and nothing else. here is the content: <<give me a summary of the health issues of patients john deere, fateh sandhu, and virat kohli>>"
-let order = "give me a summary of the health issues of patients Diana Prince and Joe Schmoe and update the latter's weight to 150. remove dave schapelle from the db."
+ let order = "give me a summary of the health issues of patients Diana Prince and Joe Schmoe and update the latter's weight to 150. update diana prince's weight to 270. remove dave schapelle from the db."
+// let order = "update john doe's weight to 150, height to 180";
 // let order = "create a patient called fateh sandhu in the database with height 176 and weight 74, medical conditions of kidney stones. update dude guy's weight to 89.";
-// const format = "format {crud_action: [{<ACTION_1>:[{<PATIENT1_NAME>:{<RELEVANT FIELD>: value}, <PATIENT2_NAME>:{<RELEVANT FIELD>: value} }]},{<ACTION_2>:[{<PATIENT1_NAME>:{<RELEVANT FIELD>: value}, <PATIENT2_NAME>:{<RELEVANT FIELD>: value} }]}]})" 
-
-// const format = `
-// <<if needed>> "READ": ["name1", "name2"],
-// <<if needed>> "CREATE": [{"name_x": {dictionary of attributes}}..],
-// <<if needed>> "UPDATE": [{"name":[{dictionary of updates}] }, ...] ],
-// <<if needed>> "DELETE": ["name_a", "name_b", ...]
-// `
 
 const format = `
 {
