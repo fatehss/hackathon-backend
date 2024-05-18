@@ -1,3 +1,4 @@
 node_modules
 .env
+openai/node_modules/
 
