@@ -1,23 +1,22 @@
-const { Configuration, OpenAIApi } = require('openai');
-require('dotenv').config();
+import OpenAI from "openai";
+import dotenv from "dotenv";
 
-const configuration = new Configuration({
+// Load environment variables from .env file
+dotenv.config();
+
+const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
 });
-const openai = new OpenAIApi(configuration);
 
-async function getHelloWorld() {
-  try {
-    const response = await openai.createChatCompletion({
-      model: 'gpt-4',
-      messages: [{ role: 'user', content: 'Say "Hello, World!"' }],
-    });
+let prompt = "in the following information, return the name(s) of the individual in json format like <<{\"names\": [\"x\",\"y\"]}>>. provide the response in just json and nothing else. here is the content: <<give me a summary of the health issues of patients john deere, fateh sandhu, and virat kohli>>"
+async function main() {
+  const completion = await openai.chat.completions.create({
+    messages: [{ role: "system", content: prompt }],
+    model: "gpt-3.5-turbo",
+    response_format: {"type": "json_object"}
+  });
 
-    const completion = response.data.choices[0].message.content;
-    console.log(completion);
-  } catch (error) {
-    console.error('Error querying OpenAI:', error);
-  }
+  console.log(completion.choices[0]);
 }
 
-getHelloWorld();
+main();
