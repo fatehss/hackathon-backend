@@ -15,8 +15,9 @@ async function main() {
     model: "gpt-3.5-turbo",
     response_format: {"type": "json_object"}
   });
+  let names = JSON.parse(completion.choices[0]['message']['content']);
+  console.log(names);
 
-  console.log(completion.choices[0]);
 }
 
 main();
