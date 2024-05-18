@@ -1,9 +1,7 @@
 import OpenAI from "openai";
 import dotenv from "dotenv";
 import { MongoClient } from 'mongodb';
-const openai = new OpenAI({
-    apiKey: process.env.OPENAI_API_KEY,
-  });
+
 // functions.js
 export async function READ(prompt, input) {
     // assumes input in the form {READ: [names]}
@@ -11,11 +9,13 @@ export async function READ(prompt, input) {
     
     // Create a new MongoClient
     const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
-
+    const openai = new OpenAI({
+        apiKey: process.env.OPENAI_API_KEY,
+      });
     try {
         // Connect to the MongoDB server
         await client.connect();
-        console.log("Connected successfully to server");
+        // console.log("Connected successfully to server");
 
         // Specify the database and collection
         const database = client.db('test');
@@ -39,13 +39,17 @@ export async function READ(prompt, input) {
         
         console.log(`Here is the query: ${context.toString()}`);
 
-        let new_prompt = prompt + `, given the context: <<<${context.toString()}>>>. You are a Nurse AI, be professional and get to the point concisely. Only use the given context for your response.`;
+        let new_prompt = "Forget any previous prompt. Answer the following as aa Nurse AI, be professional and get to the point concisely. Only use the given context for your response:<<<"+ prompt + `>>>, given the context: <<<${context.toString()}>>>. You are .`;
+        // console.log(new_prompt);
         const completion2 = await openai.chat.completions.create({
             messages: [{ role: "system", content: new_prompt }],
             model: "gpt-4o"
           });
-        console.log(`\nHere is the response:\n ${completion2.choices[0]["message"]["content"]}`);
-        return `${completion2.choices[0]["message"]["content"]}`;
+        let response = completion2.choices[0]["message"]["content"]
+        // console.log(`\nHere is the response:\n ${response}`);
+        let x = 0;
+
+        return `${response}`;
     } catch (err) {
         console.error(err);
     } finally {
@@ -85,7 +89,7 @@ export async function CREATE(input) {
 
             // Insert the new document
             const result = await collection.insertOne(newDoc);
-            console.log(`Inserted document for ${outerKey}with id: ${result.insertedId}`);
+            return `Inserted document for ${outerKey}with id: ${result.insertedId}`;
         }
     } catch (err) {
         console.error(err);
@@ -173,7 +177,7 @@ export async function DELETE(input) {
             }
         }
         
-        console.log(context.toString());
+        // console.log(context.toString());
         return context.toString();
     } catch (err) {
         console.error(err);

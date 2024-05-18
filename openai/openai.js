@@ -1,6 +1,6 @@
 import OpenAI from "openai";
 import dotenv from "dotenv";
-
+import {CREATE, READ, UPDATE, DELETE} from "./crud.js"
 // Load environment variables from .env file
 dotenv.config();
 const openai = new OpenAI({
@@ -8,7 +8,7 @@ const openai = new OpenAI({
 });
 
 // let prompt = "in the following information, return the name(s) of the individual in json format like <<{\"names\": [\"x\",\"y\"]}>>. provide the response in just json and nothing else. here is the content: <<give me a summary of the health issues of patients john deere, fateh sandhu, and virat kohli>>"
- let order = "give me a summary of the health issues of patients Diana Prince and Joe Schmoe and update the latter's weight to 150. update diana prince's weight to 270. remove dave schapelle from the db."
+ let order = "tell me about the health of John Doe.";
 // let order = "update john doe's weight to 150, height to 180";
 // let order = "create a patient called fateh sandhu in the database with height 176 and weight 74, medical conditions of kidney stones. update dude guy's weight to 89.";
 
@@ -51,14 +51,35 @@ async function main() {
   // var out = JSON.stringify(names);
   // console.log(out);
 
-  let CRUD = JSON.parse(completion.choices[0]['message']['content']);
+  const CRUD = JSON.parse(completion.choices[0]['message']['content']);
   console.log(JSON.stringify(CRUD))
 
-  for (var i =0; i < CRUD.length; i++)
-  {
-    console.log(`loop ${i}\n`)
-    console.log(JSON.stringify(CRUD[i]));
+  let response = ""
+  for (const key in CRUD) {
+    console.log(`\n\n_______KEY ${key}________\n\n`);
+    let crudOperationOutput = ""
+    switch (key)
+    {
+      case 'READ':
+        crudOperationOutput = await READ(order, CRUD[key]);
+        break;
+      case 'CREATE':
+        crudOperationOutput = await CREATE(CRUD[key]);
+        break;
+      case 'UPDATE':
+        crudOperationOutput = await UPDATE(CRUD[key]);
+        break;
+      case 'DELETE':
+        crudOperationOutput = await DELETE(CRUD[key]);
+        break;
+    };
+    response = response + crudOperationOutput + '\n';
   }
+
+  console.log("\n\n\nFINAL RESPONSE: _________\n\n");
+  console.log(response)
+  return response;
+
 
 }
 
