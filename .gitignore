@@ -1,4 +1,4 @@
 node_modules
 openai/.env
 openai/node_modules/
-
+openai/test.js

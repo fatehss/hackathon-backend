@@ -44,7 +44,8 @@ export async function READ(prompt, input) {
             messages: [{ role: "system", content: new_prompt }],
             model: "gpt-4o"
           });
-        console.log(`\nHere is the response:\n ${completion2.choices[0]["message"]["content"]}`)
+        console.log(`\nHere is the response:\n ${completion2.choices[0]["message"]["content"]}`);
+        return `${completion2.choices[0]["message"]["content"]}`;
     } catch (err) {
         console.error(err);
     } finally {
@@ -53,8 +54,8 @@ export async function READ(prompt, input) {
     }
 }
 
-export async function CREATE() {
-    
+
+export async function CREATE(input) {
     const uri = "mongodb://localhost:27017";
     
     // Create a new MongoClient
@@ -69,6 +70,23 @@ export async function CREATE() {
         const database = client.db('test');
         const collection = database.collection('patients');
 
+        for (let i = 0; i < input.length; i++) {
+            const person = input[i];
+            
+            // Extract the key and the nested object
+            const outerKey = Object.keys(person)[0];
+            const innerObject = person[outerKey];
+
+            // Create the new document
+            const newDoc = {
+                name: outerKey,
+                ...innerObject
+            };
+
+            // Insert the new document
+            const result = await collection.insertOne(newDoc);
+            console.log(`Inserted document for ${outerKey}with id: ${result.insertedId}`);
+        }
     } catch (err) {
         console.error(err);
     } finally {
@@ -91,7 +109,7 @@ export async function UPDATE(input) {
         // Specify the database and collection
         const database = client.db('test');
         const collection = database.collection('patients');
-
+        console.log()
         for (let i = 0; i<input.length; i++){
             const person = input[i];
                 // Extract the key and the nested object
@@ -99,18 +117,18 @@ export async function UPDATE(input) {
             const innerObject = person[outerKey];
 
             // Build the filter and update objects
-            const filter = { [outerKey]: { $exists: true } };
+            const filter = { name: outerKey };
             const updateDoc = {
             $set: {}
             };
             
             for (const [key, value] of Object.entries(innerObject)) {
-            updateDoc.$set[`${outerKey}.${key}`] = value;
+            updateDoc.$set[`${key}`] = value;
             }
 
             // Update the document
             const result = await collection.updateOne(filter, updateDoc);
-            console.log(`${result.matchedCount} document(s) matched the filter, updated ${result.modifiedCount} document(s)`);
+            return `${result.matchedCount} document(s) matched the filter, updated ${result.modifiedCount} document(s)`;
         }
     } catch (err) {
         console.error(err);
@@ -120,9 +138,8 @@ export async function UPDATE(input) {
     }
     
 }
-  
 
-export async function DELETE(prompt, input) {
+export async function DELETE(input) {
     // assumes input in the form {READ: [names]}
     const uri = "mongodb://localhost:27017";
     
@@ -156,14 +173,8 @@ export async function DELETE(prompt, input) {
             }
         }
         
-        console.log(`Here is the query: ${context.toString()}`);
-
-        let new_prompt = prompt + `, given the context: <<<${context.toString()}>>>, in a short summary mention the deletions/no deletions if any`;
-        const completion2 = await openai.chat.completions.create({
-            messages: [{ role: "system", content: new_prompt }],
-            model: "gpt-4o"
-          });
-        console.log(`\nHere is the response:\n ${completion2.choices[0]["message"]["content"]}`)
+        console.log(context.toString());
+        return context.toString();
     } catch (err) {
         console.error(err);
     } finally {
