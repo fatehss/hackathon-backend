@@ -3,53 +3,38 @@ import Markdown from 'react-markdown'
 
 export default function InfoPage() {
   return (
-    <>
+    <div className="p-4">
+      
+      <h1 className="text-2xl">
+        MediSync AI
+      </h1>
 
-    <Markdown> 
-        {`
-# Medisync: Empowering Medical Professionals with Seamless Database Interaction
+      <h2 className="text-xl mt-5 font-semibold">Problem:</h2>
+      <p className='text-xl'>
+        Medical professionals with no technical background  have difficulty interacting with large medical databases. They often require some technical expertise to query large databases or intensive training on the traditional old EHR systems.
+      </p>
 
-## Problem Statement:
-Many medical professionals lack technical backgrounds, which poses a significant challenge when they need to interact with large medical databases. Navigating complex data structures and conducting analyses becomes daunting, impeding efficient patient care and medical research.
 
-## Solution:
-Medisync bridges the gap between medical professionals and large medical databases by offering an intuitive platform for seamless interaction. Our solution enables medical practitioners, regardless of their technical proficiency, to effortlessly access, analyze, and visualize patient history data. Leveraging cutting-edge Natural Language Processing (NLP) and vector database technologies, Medisync simplifies complex data queries and provides actionable insights in a user-friendly interface.
+      <h2 className="text-xl mt-5 font-semibold">Solution:</h2>
+      <p className='text-xl'>
+        We enable medical professionals with no technical background to easily interact with large medical databases and help them analyze and visual patient history thought NLP and vector databases. We give them the ability to query and interact with their database by chatting with MediSync agent. They can update medical records or summarize a patients general health throught chatting.
+        We also added visualization general health vitals metrics that was collected through interacting with MediSync.
+      </p>
 
-## Key Features:
-1. **Intuitive Interface:** Medisync offers a user-friendly interface designed specifically for medical professionals, minimizing the learning curve associated with database interaction.
-  
-2. **NLP-Powered Querying:** Our NLP engine allows users to input queries in natural language, eliminating the need for complex database query languages.
 
-3. **Advanced Data Analysis:** Medisync utilizes sophisticated algorithms to analyze patient history data, identifying trends, correlations, and anomalies to aid medical decision-making.
-
-4. **Visualizations:** Interactive visualizations present data in a comprehensible format, facilitating rapid insights and informed decision-making.
-
-5. **Security and Compliance:** Medisync prioritizes data security and compliance with medical regulations, ensuring confidentiality and integrity of patient information.
-
-## Team:
-- **Mohammed Balfaqih:** Frontend Developer and Devops
-- **Ripudaman Singh:** Backend Developer (Vector Database)
-- **Hoang Nguyen:** Vector Database Professional
-- **Ping Qiu:** Backend Developer
-- **Fateh Sandhu:** Backend Developer (Open AI)
-
-## How It Works:
-1. **Input Query:** Users input their queries using natural language or predefined templates.
-2. **NLP Processing:** The NLP engine interprets the query and translates it into database commands.
-3. **Data Retrieval:** Medisync retrieves relevant data from the medical databases based on the query.
-4. **Analysis and Visualization:** The retrieved data is analyzed and presented through intuitive visualizations.
-5. **Insights and Recommendations:** Medisync provides actionable insights and recommendations based on the analysis, assisting medical professionals in decision-making processes.
-
-## Benefits:
-- **Efficiency:** Streamlines data interaction processes, saving time and effort for medical professionals.
-- **Accessibility:** Democratizes access to complex medical data, empowering non-technical users.
-- **Insightful Analysis:** Facilitates in-depth analysis of patient history data, enabling personalized patient care and medical research.
-
-## Get Started:
-Interested in revolutionizing the way medical professionals interact with large medical databases? Contact us to schedule a demo or learn more about Medisync.`}
-    </Markdown>
-    
-    </>
+      <h2 className="text-xl mt-5 font-semibold">Current Solution:</h2>
+      <div className="flex flex-col space-y-1">
+      <p className='text-xl'>
+        - Currently, health professionals needs to communicate with technical professionals in order to deal with their big health data. 
+      </p>
+      <p className='text-xl'>
+          - They also use complicated tools that requires intensive training before using them to book keep their patient records such as Cerner or Epic.
+      </p>
+      <p className='text-xl'>
+          - They even need more technical experience to be able to easily visualize their data.
+      </p>
+      </div>
+    </div>
 
   )
 }

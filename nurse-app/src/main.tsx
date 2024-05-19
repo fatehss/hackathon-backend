@@ -43,7 +43,7 @@ const router = createBrowserRouter([
                         element: <ChatPage></ChatPage>
                     },
                     {
-                        path: "/info",
+                        path: "/",
                         element: <InfoPage></InfoPage>
                     }
                 ]

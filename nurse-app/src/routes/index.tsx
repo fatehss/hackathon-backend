@@ -14,11 +14,6 @@ export default function MainPage() {
 			to: "/",
 			icon: <HomeIcon className="size-7"></HomeIcon>,
 		},
-		{
-			label: "Chat",
-			to: "/info",
-			icon: <InformationCircleIcon className="size-7"></InformationCircleIcon>,
-		},
 	];
 
 
@@ -32,7 +27,7 @@ export default function MainPage() {
 						<ArrowPathIcon className="size-9"></ArrowPathIcon>
 					</div>
 					{links.map((link, i) => (
-						<NavLink key={i} className="border-black rounded-lg p-2" id={link.label} to={link.to}>
+						<NavLink key={i} className="border-black border-2 border-black rounded-lg p-2" id={link.label} to={link.to}>
 							{link.icon}
 						</NavLink>
 					))}

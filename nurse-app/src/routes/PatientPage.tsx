@@ -139,7 +139,7 @@ export default function PatientPage() {
     <div className="flex flex-col min-h-screen">
       <AddRecordModal isOpen={modalIsOpen} onRequestClose={closeModal} onSubmit={handleAddRecord} />
       <div className="flex items-center h-20 p-3 justify-between">
-        <h1 className="text-xl">John Doe</h1>
+        <h1 className="text-xl">{patient.name}</h1>
         <div className="flex space-x-2">
           <button
             onClick={openModal}
@@ -156,7 +156,7 @@ export default function PatientPage() {
 
       <div className="p-5">
         <div className="border-2 p-2 border-red-500 rounded-md text-center">
-          Based on the history of John Doe. He's in risk of a cardiovascular disease.
+          Based on the history of {patient.name}. He's in risk of a cardiovascular disease.
         </div>
       </div>
 
