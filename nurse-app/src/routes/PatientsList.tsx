@@ -72,8 +72,8 @@ export default function PatientsList() {
 
 	return (
 		<div className="flex flex-col min-h-screen">
-			<div className="flex items-center h-20 p-3 justify-between">
-				<h1 className="text-xl">Patients List</h1>
+			<div className="flex items-center h-20 p-3 justify-between bg-white">
+				<h1 className="text-2xl font-semibold text-indigo-500">Patients List</h1>
 				<Link to="/new" className="bg-black text-white text-sm w-40 rounded-md px-2 py-2.5 flex items-center space-x-2 font-medium justify-center">
 					<PlusIcon className="size-4"></PlusIcon>
 

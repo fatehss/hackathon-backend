@@ -42,6 +42,7 @@ export async function performCrudOperations(order) {
     messages: [{ role: "system", content: prompt }],
     model: "gpt-4o",
     response_format: { type: "json_object" },
+    seed: 33
   });
   // let names = JSON.parse(completion.choices[0]['message']['content']);
   // var out = JSON.stringify(names);
@@ -99,6 +100,7 @@ export async function negativeOrPositive(order) {
     messages: [{ role: "system", content: prompt }],
     model: "gpt-4o",
     response_format: { type: "json_object" },
+    seed: 33
   });
   // let names = JSON.parse(completion.choices[0]['message']['content']);
   // var out = JSON.stringify(names);

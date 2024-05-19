@@ -12,7 +12,7 @@ export default function MainPage() {
 		{
 			label: "Home",
 			to: "/",
-			icon: <HomeIcon className="size-7"></HomeIcon>,
+			icon: <HomeIcon className="size-7 text-indigo-500"></HomeIcon>,
 		},
 	];
 
@@ -24,10 +24,10 @@ export default function MainPage() {
 
 
 					<div className="flex items-center justify-center text-center h-20 w-full">
-						<ArrowPathIcon className="size-9"></ArrowPathIcon>
+						<img src="/medi.png"></img>
 					</div>
 					{links.map((link, i) => (
-						<NavLink key={i} className="border-black border-2 border-black rounded-lg p-2" id={link.label} to={link.to}>
+						<NavLink key={i} className=" border-2 border-indigo-500 rounded-lg p-2" id={link.label} to={link.to}>
 							{link.icon}
 						</NavLink>
 					))}

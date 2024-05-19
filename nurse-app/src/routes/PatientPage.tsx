@@ -138,8 +138,8 @@ export default function PatientPage() {
   return (
     <div className="flex flex-col min-h-screen">
       <AddRecordModal isOpen={modalIsOpen} onRequestClose={closeModal} onSubmit={handleAddRecord} />
-      <div className="flex items-center h-20 p-3 justify-between">
-        <h1 className="text-xl">{patient.name}</h1>
+      <div className="flex items-center h-20 p-3 justify-between bg-white">
+        <h1 className="text-2xl font-semibold text-indigo-500">{patient.name}</h1>
         <div className="flex space-x-2">
           <button
             onClick={openModal}
@@ -154,14 +154,14 @@ export default function PatientPage() {
         </div>
       </div>
 
-      <div className="p-5">
+      {/* <div className="p-5">
         <div className="border-2 p-2 border-red-500 rounded-md text-center">
           Based on the history of {patient.name}. He's in risk of a cardiovascular disease.
         </div>
-      </div>
+      </div> */}
 
-      <div className="p-3 flex flex-wrap">
-        <div className="w-full md:w-1/2 p-2 bg-white rounded-md">
+      <div className="p-3 flex space-x-2 justify-center">
+        <div className="w-full md:w-5/12 p-2 bg-white rounded-md">
           <h2 className="text-lg mb-3">Systolic Blood Pressure</h2>
           <Line
             data={chartData(
@@ -171,7 +171,7 @@ export default function PatientPage() {
             )}
           />
         </div>
-        <div className="w-full md:w-1/2 p-2 bg-white rounded-md">
+        <div className="w-full md:w-5/12 p-2 bg-white rounded-md">
           <h2 className="text-lg mb-3">Diastolic Blood Pressure</h2>
           <Line
             data={chartData(
@@ -181,7 +181,7 @@ export default function PatientPage() {
             )}
           />
         </div>
-        <div className="w-full md:w-1/2 p-2 bg-white rounded-md">
+        {/* <div className="w-full md:w-1/2 p-2 bg-white rounded-md">
           <h2 className="text-lg mb-3">Glucose Levels</h2>
           <Line
             data={chartData(
@@ -200,7 +200,7 @@ export default function PatientPage() {
               "rgba(255,99,132,1)"
             )}
           />
-        </div>
+        </div> */}
       </div>
 
       <div className="p-3">
