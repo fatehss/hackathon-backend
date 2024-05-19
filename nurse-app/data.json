@@ -1,0 +1,208 @@
+{
+    "patients": [
+        {
+            "id": "id1",
+            "name": "Mohammed Balfaqih",
+            "medical_document_id": "1234",
+            "age": "19",
+            "date_of_birth": "25-05-2002",
+            "sex": "male",
+            "height": "174",
+            "records": [
+                {
+                    "date": "25-05-2024",
+                    "weight": "90",
+                    "systolic_blood_pressure": "120",
+                    "diastolic_blood_pressure": "80",
+                    "glocus": "normal",
+                    "cholesterol": "normal"
+                },
+                {
+                    "date": "20-04-2024",
+                    "weight": "88",
+                    "systolic_blood_pressure": "118",
+                    "diastolic_blood_pressure": "78",
+                    "glocus": "normal",
+                    "cholesterol": "normal"
+                },
+                {
+                    "date": "15-03-2024",
+                    "weight": "87",
+                    "systolic_blood_pressure": "119",
+                    "diastolic_blood_pressure": "77",
+                    "glocus": "normal",
+                    "cholesterol": "slightly high"
+                },
+                {
+                    "date": "10-02-2024",
+                    "weight": "85",
+                    "systolic_blood_pressure": "117",
+                    "diastolic_blood_pressure": "76",
+                    "glocus": "normal",
+                    "cholesterol": "normal"
+                },
+                {
+                    "date": "05-01-2024",
+                    "weight": "83",
+                    "systolic_blood_pressure": "115",
+                    "diastolic_blood_pressure": "75",
+                    "glocus": "normal",
+                    "cholesterol": "normal"
+                }
+            ]
+        },
+        {
+            "id": "id2",
+            "name": "Fatima Al-Mutairi",
+            "medical_document_id": "5678",
+            "age": "25",
+            "date_of_birth": "10-11-1998",
+            "sex": "female",
+            "height": "162",
+            "records": [
+                {
+                    "date": "25-05-2024",
+                    "weight": "68",
+                    "systolic_blood_pressure": "110",
+                    "diastolic_blood_pressure": "70",
+                    "glocus": "normal",
+                    "cholesterol": "normal"
+                },
+                {
+                    "date": "20-04-2024",
+                    "weight": "67",
+                    "systolic_blood_pressure": "112",
+                    "diastolic_blood_pressure": "72",
+                    "glocus": "normal",
+                    "cholesterol": "normal"
+                },
+                {
+                    "date": "15-03-2024",
+                    "weight": "66",
+                    "systolic_blood_pressure": "111",
+                    "diastolic_blood_pressure": "71",
+                    "glocus": "normal",
+                    "cholesterol": "slightly high"
+                },
+                {
+                    "date": "10-02-2024",
+                    "weight": "65",
+                    "systolic_blood_pressure": "113",
+                    "diastolic_blood_pressure": "73",
+                    "glocus": "normal",
+                    "cholesterol": "normal"
+                },
+                {
+                    "date": "05-01-2024",
+                    "weight": "64",
+                    "systolic_blood_pressure": "109",
+                    "diastolic_blood_pressure": "69",
+                    "glocus": "normal",
+                    "cholesterol": "normal"
+                }
+            ]
+        },
+        {
+            "id": "id3",
+            "name": "Ahmed Ali",
+            "medical_document_id": "91011",
+            "age": "30",
+            "date_of_birth": "05-07-1993",
+            "sex": "male",
+            "height": "180",
+            "records": [
+                {
+                    "date": "25-05-2024",
+                    "weight": "80",
+                    "systolic_blood_pressure": "130",
+                    "diastolic_blood_pressure": "85",
+                    "glocus": "high",
+                    "cholesterol": "high"
+                },
+                {
+                    "date": "20-04-2024",
+                    "weight": "82",
+                    "systolic_blood_pressure": "132",
+                    "diastolic_blood_pressure": "87",
+                    "glocus": "high",
+                    "cholesterol": "high"
+                },
+                {
+                    "date": "15-03-2024",
+                    "weight": "83",
+                    "systolic_blood_pressure": "135",
+                    "diastolic_blood_pressure": "90",
+                    "glocus": "high",
+                    "cholesterol": "high"
+                },
+                {
+                    "date": "10-02-2024",
+                    "weight": "81",
+                    "systolic_blood_pressure": "131",
+                    "diastolic_blood_pressure": "86",
+                    "glocus": "high",
+                    "cholesterol": "high"
+                },
+                {
+                    "date": "05-01-2024",
+                    "weight": "79",
+                    "systolic_blood_pressure": "129",
+                    "diastolic_blood_pressure": "84",
+                    "glocus": "high",
+                    "cholesterol": "high"
+                }
+            ]
+        },
+        {
+            "id": "id4",
+            "name": "Aisha Khan",
+            "medical_document_id": "121314",
+            "age": "40",
+            "date_of_birth": "15-08-1983",
+            "sex": "female",
+            "height": "165",
+            "records": [
+                {
+                    "date": "25-05-2024",
+                    "weight": "75",
+                    "systolic_blood_pressure": "125",
+                    "diastolic_blood_pressure": "80",
+                    "glocus": "normal",
+                    "cholesterol": "normal"
+                },
+                {
+                    "date": "20-04-2024",
+                    "weight": "76",
+                    "systolic_blood_pressure": "127",
+                    "diastolic_blood_pressure": "82",
+                    "glocus": "normal",
+                    "cholesterol": "normal"
+                },
+                {
+                    "date": "15-03-2024",
+                    "weight": "74",
+                    "systolic_blood_pressure": "126",
+                    "diastolic_blood_pressure": "81",
+                    "glocus": "normal",
+                    "cholesterol": "slightly high"
+                },
+                {
+                    "date": "10-02-2024",
+                    "weight": "73",
+                    "systolic_blood_pressure": "124",
+                    "diastolic_blood_pressure": "79",
+                    "glocus": "normal",
+                    "cholesterol": "normal"
+                },
+                {
+                    "date": "05-01-2024",
+                    "weight": "72",
+                    "systolic_blood_pressure": "123",
+                    "diastolic_blood_pressure": "78",
+                    "glocus": "normal",
+                    "cholesterol": "normal"
+                }
+            ]
+        }
+    ]
+}
