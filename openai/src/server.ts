@@ -4,6 +4,7 @@ import "dotenv/config";
 import mongoose from "mongoose";
 import patientRoute from "./routes/patient/patientRoute";
 import aiChatRoute from "./routes/aiChat/aiChatRoute";
+import { negativeOrPositive } from "./aiengine/openai";
 
 // Load environment variables from the .env file
 const MONGODB_URL = process.env.MONGODB_CONNECTION_STRING as string;
@@ -44,6 +45,8 @@ app.use(express.urlencoded({ extended: true }));
 app.get("/", async (req: Request, res: Response) => {
     res.json({ message: "Health check passed" });
 });
+
+// negativeOrPositive("There is no available data for a patient named Mohammed. Please provide more information or check the records for accuracy.")
 
 app.use("/records", patientRoute);
 app.use("/aichat", aiChatRoute);

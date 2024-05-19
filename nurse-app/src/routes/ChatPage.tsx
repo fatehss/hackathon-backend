@@ -52,7 +52,12 @@ export default function ChatPage() {
 	const fakeTypingEffect = (fullMessage) => {
         
 		let index = 0;
-		const typingSpeed = 50; // Adjust typing speed here
+		const minSpeed = 20; // Minimum typing speed (in ms)
+		const maxSpeed = 100; // Maximum typing speed (in ms)
+		const baseSpeed = 3000; // Base speed factor for calculations
+	
+		// Calculate typing speed based on the length of the message
+		const typingSpeed = Math.max(minSpeed, Math.min(maxSpeed, baseSpeed / fullMessage.length));// Adjust typing speed here
 
 		const typingInterval = setInterval(() => {
 			setMessages((prevMessages) => {

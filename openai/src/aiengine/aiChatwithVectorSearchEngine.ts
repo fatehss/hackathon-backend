@@ -2,7 +2,7 @@ import e, { Request, Response } from "express";
 import { aiChatwithVectorSearchEngine, vectorSearch } from "./utils";
 // import { ChatCompletionMessageParam } from "openai/resources/chat/completions";
 
-import { performCrudOperations } from "./openai";
+import { negativeOrPositive, performCrudOperations } from "./openai";
 
 import { OpenAI } from "openai";
 export const openai = new OpenAI();
@@ -17,37 +17,39 @@ export const aiChatEngine = async (req: Request, res: Response) => {
         // const patientId = req.body.patientId;
         const patientId = "id1";
 
-        // if (
-        //     //     req.body.query &&
-        //     //     (req.body.query.includes("delete") ||
-        //     //         req.body.query.includes("remove"))
-        //     //
-
-        //     searchQuery.includes("delete") ||
-        //     searchQuery.includes("remove") ||
-        //     searchQuery.includes("create")
-        // ) {
-        //     const stringResponse = await performCrudOperations(searchQuery);
-
-        //     console.log("stringResponse: ", stringResponse);
-
-        //     res.json({ message: stringResponse });
-        // } else {
-        //     const responseChat = await aiChatwithVectorSearchEngine(
-        //         dbName,
-        //         collectionName,
-        //         searchQuery,
-        //         patientId
-        //     );
-
-        //     res.json({ message: responseChat });
-        // }
 
         const stringResponse = await performCrudOperations(searchQuery);
 
-        console.log("stringResponse: ", stringResponse);
+        console.log("String Response Attempt Fateh")
+        console.log("stringResponse: ", stringResponse);   
 
-        res.json({ message: stringResponse });
+        const posOrNeg = await negativeOrPositive(stringResponse);
+
+        if (posOrNeg.result) {
+
+            console.log("fateh")
+            res.json({ message: stringResponse });
+
+        } else {
+            console.log("hoang")
+            const responseChat = await aiChatwithVectorSearchEngine(
+                dbName,
+                collectionName,
+                searchQuery,
+                patientId
+            );
+
+            res.json({ message: responseChat });
+        }
+
+
+       
+
+        // const stringResponse = await performCrudOperations(searchQuery);
+
+        // console.log("stringResponse: ", stringResponse);
+
+        // res.json({ message: stringResponse });
 
         // const searchQuery = req.body.query;
         // const patientId = req.body.patientId;
