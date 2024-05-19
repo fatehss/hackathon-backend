@@ -1,11 +1,16 @@
 from flask import Flask, jsonify, request
+from flask_cors import CORS, cross_origin
+
 from pymongo import MongoClient
 import json
 import copy
 
 app = Flask(__name__)
 
-client = MongoClient('mongodb://156.57.100.224:27017/',
+cors = CORS(app)
+app.config['CORS_HEADERS'] = 'Content-Type'
+
+client = MongoClient('mongodb://localhost:27017/',
                         username='rootroot', password='example123!')
 db = client['hackathon']
 col_patients = db['patients']
@@ -82,4 +87,4 @@ def do_record(pid, rid):
             return {'status': 'ok'}
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', debug=True)
+    app.run(host='0.0.0.0', port='3030', debug=True)
