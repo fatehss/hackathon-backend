@@ -14,34 +14,40 @@ export const aiChatEngine = async (req: Request, res: Response) => {
     try {
         const searchQuery = req.body.query;
         // const searchQuery = "delete John Doe from the database";
-        const patientId = req.body.patientId;
-        // const patientId = "id1";
+        // const patientId = req.body.patientId;
+        const patientId = "id1";
 
-        if (
-            //     req.body.query &&
-            //     (req.body.query.includes("delete") ||
-            //         req.body.query.includes("remove"))
-            //
+        // if (
+        //     //     req.body.query &&
+        //     //     (req.body.query.includes("delete") ||
+        //     //         req.body.query.includes("remove"))
+        //     //
 
-            searchQuery.includes("delete") ||
-            searchQuery.includes("remove") ||
-            searchQuery.includes("create")
-        ) {
-            const stringResponse = await performCrudOperations(searchQuery);
+        //     searchQuery.includes("delete") ||
+        //     searchQuery.includes("remove") ||
+        //     searchQuery.includes("create")
+        // ) {
+        //     const stringResponse = await performCrudOperations(searchQuery);
 
-            console.log("stringResponse: ", stringResponse);
+        //     console.log("stringResponse: ", stringResponse);
 
-            res.json({ message: stringResponse });
-        } else {
-            const responseChat = await aiChatwithVectorSearchEngine(
-                dbName,
-                collectionName,
-                searchQuery,
-                patientId
-            );
+        //     res.json({ message: stringResponse });
+        // } else {
+        //     const responseChat = await aiChatwithVectorSearchEngine(
+        //         dbName,
+        //         collectionName,
+        //         searchQuery,
+        //         patientId
+        //     );
 
-            res.json({ message: responseChat });
-        }
+        //     res.json({ message: responseChat });
+        // }
+
+        const stringResponse = await performCrudOperations(searchQuery);
+
+        console.log("stringResponse: ", stringResponse);
+
+        res.json({ message: stringResponse });
 
         // const searchQuery = req.body.query;
         // const patientId = req.body.patientId;

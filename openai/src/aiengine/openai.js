@@ -1,6 +1,6 @@
-import OpenAI from "openai";
 import dotenv from "dotenv";
-import {CREATE, READ, UPDATE, DELETE} from "./crud.js"
+import OpenAI from "openai";
+import { CREATE, DELETE, READ, UPDATE } from "./crud.js";
 // Load environment variables from .env file
 dotenv.config();
 
@@ -69,7 +69,11 @@ let prompt = `based on the following information, return in this format <<<${for
         crudOperationOutput = await DELETE(CRUD[key]);
         break;
     };
-    response = response + crudOperationOutput + '\n';
+
+    if (typeof crudOperationOutput !== undefined) {
+        response = response + crudOperationOutput + '\n';
+
+    }
   }
 
   console.log("\n\n\nFINAL RESPONSE: _________\n\n");
